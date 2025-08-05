@@ -2,7 +2,7 @@
 
 <div align="center">
     <a href="https://arxiv.org/abs/2410.15957"><img src="https://img.shields.io/static/v1?label=arXiv&message=2410.15957&color=b21d1a"></a>
-    <a href="https://zgctroy.github.io/CamI2V"><img src="https://img.shields.io/static/v1?label=Project&message=Page&color=green"></a>
+    <a href="https://Wanderer7-sk.github.io/Dream4D.github.io"><img src="https://img.shields.io/static/v1?label=Project&message=Page&color=green"></a>
 </div>
 
 ## Abstract:
