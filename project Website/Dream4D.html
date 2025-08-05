@@ -1,0 +1,848 @@
+﻿<html class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head>
+    <meta charset="utf-8">
+    <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+    <!-- Replace the content tag with appropriate information -->
+    <meta name="description" content="Dream4D, a camera-controllable image-to-video diffusion model enhanced by explicit geometry constraint.">
+    <meta property="og:title" content="Dream4D: Lifting Camera-Controlled I2V towards Spatiotemporally Consistent 4D Generation">
+    <meta property="og:description" content="Dream4D, a camera-controllable image-to-video diffusion model enhanced by explicit geometry constraint.">
+    <meta property="og:url" content="https://zgctroy.github.io/CamI2V/">
+
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+    <!-- <meta property="og:image" content="static/image/your_banner_image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" /> -->
+
+
+    <meta name="twitter:title" content="Dream4D: Lifting Camera-Controlled I2V towards Spatiotemporally Consistent 4D Generation">
+    <meta name="twitter:description" content="Dream4D, a camera-controllable image-to-video diffusion model enhanced by explicit geometry constraint.">
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+    <!-- <meta name="twitter:image" content="static/images/your_twitter_banner_image.png"> -->
+    <!-- <meta name="twitter:card" content="summary_large_image"> -->
+
+    <!-- Keywords for your paper to be indexed by-->
+    <meta name="keywords" content="Dream4D, Camera Control, Image-to-Video, Video Diffusion Model">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Dream4D: Lifting Camera-Controlled I2V towards Spatiotemporally Consistent 4D Generation</title>
+    <!-- <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"> -->
+    <style type="text/css">svg:not(:root).svg-inline--fa{overflow:visible}.svg-inline--fa{display:inline-block;font-size:inherit;height:1em;overflow:visible;vertical-align:-.125em}.svg-inline--fa.fa-lg{vertical-align:-.225em}.svg-inline--fa.fa-w-1{width:.0625em}.svg-inline--fa.fa-w-2{width:.125em}.svg-inline--fa.fa-w-3{width:.1875em}.svg-inline--fa.fa-w-4{width:.25em}.svg-inline--fa.fa-w-5{width:.3125em}.svg-inline--fa.fa-w-6{width:.375em}.svg-inline--fa.fa-w-7{width:.4375em}.svg-inline--fa.fa-w-8{width:.5em}.svg-inline--fa.fa-w-9{width:.5625em}.svg-inline--fa.fa-w-10{width:.625em}.svg-inline--fa.fa-w-11{width:.6875em}.svg-inline--fa.fa-w-12{width:.75em}.svg-inline--fa.fa-w-13{width:.8125em}.svg-inline--fa.fa-w-14{width:.875em}.svg-inline--fa.fa-w-15{width:.9375em}.svg-inline--fa.fa-w-16{width:1em}.svg-inline--fa.fa-w-17{width:1.0625em}.svg-inline--fa.fa-w-18{width:1.125em}.svg-inline--fa.fa-w-19{width:1.1875em}.svg-inline--fa.fa-w-20{width:1.25em}.svg-inline--fa.fa-pull-left{margin-right:.3em;width:auto}.svg-inline--fa.fa-pull-right{margin-left:.3em;width:auto}.svg-inline--fa.fa-border{height:1.5em}.svg-inline--fa.fa-li{width:2em}.svg-inline--fa.fa-fw{width:1.25em}.fa-layers svg.svg-inline--fa{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.fa-layers{display:inline-block;height:1em;position:relative;text-align:center;vertical-align:-.125em;width:1em}.fa-layers svg.svg-inline--fa{-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter,.fa-layers-text{display:inline-block;position:absolute;text-align:center}.fa-layers-text{left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter{background-color:#ff253a;border-radius:1em;-webkit-box-sizing:border-box;box-sizing:border-box;color:#fff;height:1.5em;line-height:1;max-width:5em;min-width:1.5em;overflow:hidden;padding:.25em;right:0;text-overflow:ellipsis;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-bottom-right{bottom:0;right:0;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom right;transform-origin:bottom right}.fa-layers-bottom-left{bottom:0;left:0;right:auto;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom left;transform-origin:bottom left}.fa-layers-top-right{right:0;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-top-left{left:0;right:auto;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top left;transform-origin:top left}.fa-lg{font-size:1.3333333333em;line-height:.75em;vertical-align:-.0667em}.fa-xs{font-size:.75em}.fa-sm{font-size:.875em}.fa-1x{font-size:1em}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-6x{font-size:6em}.fa-7x{font-size:7em}.fa-8x{font-size:8em}.fa-9x{font-size:9em}.fa-10x{font-size:10em}.fa-fw{text-align:center;width:1.25em}.fa-ul{list-style-type:none;margin-left:2.5em;padding-left:0}.fa-ul>li{position:relative}.fa-li{left:-2em;position:absolute;text-align:center;width:2em;line-height:inherit}.fa-border{border:solid .08em #eee;border-radius:.1em;padding:.2em .25em .15em}.fa-pull-left{float:left}.fa-pull-right{float:right}.fa.fa-pull-left,.fab.fa-pull-left,.fal.fa-pull-left,.far.fa-pull-left,.fas.fa-pull-left{margin-right:.3em}.fa.fa-pull-right,.fab.fa-pull-right,.fal.fa-pull-right,.far.fa-pull-right,.fas.fa-pull-right{margin-left:.3em}.fa-spin{-webkit-animation:fa-spin 2s infinite linear;animation:fa-spin 2s infinite linear}.fa-pulse{-webkit-animation:fa-spin 1s infinite steps(8);animation:fa-spin 1s infinite steps(8)}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.fa-rotate-90{-webkit-transform:rotate(90deg);transform:rotate(90deg)}.fa-rotate-180{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.fa-rotate-270{-webkit-transform:rotate(270deg);transform:rotate(270deg)}.fa-flip-horizontal{-webkit-transform:scale(-1,1);transform:scale(-1,1)}.fa-flip-vertical{-webkit-transform:scale(1,-1);transform:scale(1,-1)}.fa-flip-both,.fa-flip-horizontal.fa-flip-vertical{-webkit-transform:scale(-1,-1);transform:scale(-1,-1)}:root .fa-flip-both,:root .fa-flip-horizontal,:root .fa-flip-vertical,:root .fa-rotate-180,:root .fa-rotate-270,:root .fa-rotate-90{-webkit-filter:none;filter:none}.fa-stack{display:inline-block;height:2em;position:relative;width:2.5em}.fa-stack-1x,.fa-stack-2x{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.svg-inline--fa.fa-stack-1x{height:1em;width:1.25em}.svg-inline--fa.fa-stack-2x{height:2em;width:2.5em}.fa-inverse{color:#fff}.sr-only{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.sr-only-focusable:active,.sr-only-focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}.svg-inline--fa .fa-primary{fill:var(--fa-primary-color,currentColor);opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa .fa-secondary{fill:var(--fa-secondary-color,currentColor);opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-primary{opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-secondary{opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa mask .fa-primary,.svg-inline--fa mask .fa-secondary{fill:#000}.fad.fa-inverse{color:#fff}</style><link href="static/css/css-Google Sans-Noto Sans-Castoro.css" rel="stylesheet">
+    <link href="static/css/css2-Playfair Display-ital,wght@1,400-swap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="static/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/fonts.css">
+
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/main.js"></script><script src="static/js/ViewSDKInterface.js"></script>
+    <script defer="" src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+
+    <script type="text/javascript" async="" src="static/js/MathJax-TeX-AMS-MML_SVG.js"></script>
+    <script type="text/x-mathjax-config;executed=true">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']]
+            }
+        });
+    </script>
+
+    <style>
+        .video-container {
+            display: flex;
+            justify-content: center;
+            gap: 0px;
+        }
+
+        .italic {
+            font-family: 'Playfair Display';
+            font-style: italic;
+        }
+    </style>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.ViewSDK_hideOverflow {
+        overflow: hidden;
+    }</style><style type="text/css">.ViewSDK_parentRelativeWidth {
+        width: 100%;
+    }</style><style type="text/css">.ViewSDK_viewportRelativeWidth {
+        width: 100vw;
+    }</style><style type="text/css">.ViewSDK_parentRelativeHeight {
+        height: 100%;
+    }</style><style type="text/css">.ViewSDK_viewportRelativeHeight {
+        height: 100vh;
+    }</style><style type="text/css">.ViewSDK_fullScreenPDFViewer {
+        width:100vw !important; height:100vh !important;
+        max-width:100vw !important; max-height:100vh !important;
+        position:fixed; top:0; left:0; z-index:99999;
+        margin: 0 !important; padding: 0 !important;
+        border: none !important;
+    }</style><style type="text/css">:root { --ViewSDK-mobile-viewport-height:1vh; }</style><style type="text/css">.ViewSDK_fullScreenPDFViewerMobile {
+        width:100vw !important; height:calc(100 * var(--ViewSDK-mobile-viewport-height)) !important;
+        max-width:100vw !important; max-height:calc(100 * var(--ViewSDK-mobile-viewport-height)) !important;
+        position:fixed; top:0; left:0; z-index:99999;
+        margin: 0 !important; padding: 0 !important;
+        border: none !important;
+    }</style><style type="text/css">.ViewSDK_hideOverflow {
+        overflow: hidden;
+    }</style><style type="text/css">.ViewSDK_parentRelativeWidth {
+        width: 100%;
+    }</style><style type="text/css">.ViewSDK_viewportRelativeWidth {
+        width: 100vw;
+    }</style><style type="text/css">.ViewSDK_parentRelativeHeight {
+        height: 100%;
+    }</style><style type="text/css">.ViewSDK_viewportRelativeHeight {
+        height: 100vh;
+    }</style><style type="text/css">.ViewSDK_fullScreenPDFViewer {
+        width:100vw !important; height:100vh !important;
+        max-width:100vw !important; max-height:100vh !important;
+        position:fixed; top:0; left:0; z-index:9999;
+        margin: 0 !important; padding: 0 !important;
+        border: none !important;
+    }</style><style type="text/css">.ViewSDK_LBFullScreenPDFViewer {
+        width:100vw !important; height:100vh !important;
+        max-width:100vw !important; max-height:100vh !important;
+        position:fixed; top:0; left:0; z-index:10000;
+        margin: 0 !important; padding: 0 !important;
+        background-color: rgba(0, 0, 0, 0.2);
+        border: none !important;
+    }</style><style type="text/css">:root { --ViewSDK-mobile-viewport-height:1vh; }</style><style type="text/css">.ViewSDK_fullScreenPDFViewerMobile {
+        width:100vw !important; height:calc(100 * var(--ViewSDK-mobile-viewport-height)) !important;
+        max-width:100vw !important; max-height:calc(100 * var(--ViewSDK-mobile-viewport-height)) !important;
+        position:fixed; top:0; left:0; z-index:9999;
+        margin: 0 !important; padding: 0 !important;
+        border: none !important;
+    }</style><style type="text/css">.ViewSDK_LBLoader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 10000;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #1473E6;
+        width: 56px !important;
+        height: 56px !important;
+        margin: -32px 0 0 -32px;
+        border-radius: 50%;
+        -webkit-animation: lbSpin 2s linear infinite;
+        animation: lbSpin 2s linear infinite;
+    }
+    @-webkit-keyframes lbSpin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+    @keyframes lbSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }</style><style type="text/css">.MathJax_SVG_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax_SVG .MJX-monospace {font-family: monospace}
+.MathJax_SVG .MJX-sans-serif {font-family: sans-serif}
+#MathJax_SVG_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax_SVG {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax_SVG * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.mjx-svg-href {fill: blue; stroke: blue}
+.MathJax_SVG_Processing {visibility: hidden; position: absolute; top: 0; left: 0; width: 0; height: 0; overflow: hidden; display: block!important}
+.MathJax_SVG_Processed {display: none!important}
+.MathJax_SVG_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0}
+.MathJax_SVG_LineBox {display: table!important}
+.MathJax_SVG_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax_SVG .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_SVG_Hidden"></div><svg><defs id="MathJax_SVG_glyphs"><path stroke-width="1" id="MJMATHI-3B1" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path><path stroke-width="1" id="MJMATHI-74" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path stroke-width="1" id="MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="1" id="MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="1" id="MJMATHI-3C3" d="M184 -11Q116 -11 74 34T31 147Q31 247 104 333T274 430Q275 431 414 431H552Q553 430 555 429T559 427T562 425T565 422T567 420T569 416T570 412T571 407T572 401Q572 357 507 357Q500 357 490 357T476 358H416L421 348Q439 310 439 263Q439 153 359 71T184 -11ZM361 278Q361 358 276 358Q152 358 115 184Q114 180 114 178Q106 141 106 117Q106 67 131 47T188 26Q242 26 287 73Q316 103 334 153T356 233T361 278Z"></path><path stroke-width="1" id="MJMATHI-3F5" d="M227 -11Q149 -11 95 41T40 174Q40 262 87 322Q121 367 173 396T287 430Q289 431 329 431H367Q382 426 382 411Q382 385 341 385H325H312Q191 385 154 277L150 265H327Q340 256 340 246Q340 228 320 219H138V217Q128 187 128 143Q128 77 160 52T231 26Q258 26 284 36T326 57T343 68Q350 68 354 58T358 39Q358 36 357 35Q354 31 337 21T289 0T227 -11Z"></path><path stroke-width="1" id="MJMAIN-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path stroke-width="1" id="MJMAIN-2193" d="M473 86Q483 86 483 67Q483 63 483 61T483 56T481 53T480 50T478 48T474 47T470 46T464 44Q428 35 391 14T316 -55T264 -168Q264 -170 263 -173T262 -180T261 -184Q259 -194 251 -194Q242 -194 238 -176T221 -121T180 -49Q169 -34 155 -21T125 2T95 20T67 33T44 42T27 47L21 49Q17 53 17 67Q17 87 28 87Q33 87 42 84Q158 52 223 -45L230 -55V312Q230 391 230 482T229 591Q229 662 231 676T243 693Q244 694 251 694Q264 692 270 679V-55L277 -45Q307 1 353 33T430 76T473 86Z"></path><path stroke-width="1" id="MJMATHI-7A" d="M347 338Q337 338 294 349T231 360Q211 360 197 356T174 346T162 335T155 324L153 320Q150 317 138 317Q117 317 117 325Q117 330 120 339Q133 378 163 406T229 440Q241 442 246 442Q271 442 291 425T329 392T367 375Q389 375 411 408T434 441Q435 442 449 442H462Q468 436 468 434Q468 430 463 420T449 399T432 377T418 358L411 349Q368 298 275 214T160 106L148 94L163 93Q185 93 227 82T290 71Q328 71 360 90T402 140Q406 149 409 151T424 153Q443 153 443 143Q443 138 442 134Q425 72 376 31T278 -11Q252 -11 232 6T193 40T155 57Q111 57 76 -3Q70 -11 59 -11H54H41Q35 -5 35 -2Q35 13 93 84Q132 129 225 214T340 322Q352 338 347 338Z"></path><path stroke-width="1" id="MJMATHI-6A" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path><path stroke-width="1" id="MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="1" id="MJMATHI-75" d="M21 287Q21 295 30 318T55 370T99 420T158 442Q204 442 227 417T250 358Q250 340 216 246T182 105Q182 62 196 45T238 27T291 44T328 78L339 95Q341 99 377 247Q407 367 413 387T427 416Q444 431 463 431Q480 431 488 421T496 402L420 84Q419 79 419 68Q419 43 426 35T447 26Q469 29 482 57T512 145Q514 153 532 153Q551 153 551 144Q550 139 549 130T540 98T523 55T498 17T462 -8Q454 -10 438 -10Q372 -10 347 46Q345 45 336 36T318 21T296 6T267 -6T233 -11Q189 -11 155 7Q103 38 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="1" id="MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="1" id="MJMATHI-76" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path><path stroke-width="1" id="MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="1" id="MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path stroke-width="1" id="MJMATHI-3B4" d="M195 609Q195 656 227 686T302 717Q319 716 351 709T407 697T433 690Q451 682 451 662Q451 644 438 628T403 612Q382 612 348 641T288 671T249 657T235 628Q235 584 334 463Q401 379 401 292Q401 169 340 80T205 -10H198Q127 -10 83 36T36 153Q36 286 151 382Q191 413 252 434Q252 435 245 449T230 481T214 521T201 566T195 609ZM112 130Q112 83 136 55T204 27Q233 27 256 51T291 111T309 178T316 232Q316 267 309 298T295 344T269 400L259 396Q215 381 183 342T137 256T118 179T112 130Z"></path></defs></svg></div><div id="MathJax_Message" style="display: none;"></div>
+    <!-- title and author -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">Dream4D: Lifting Camera-Controlled I2V towards Spatiotemporally Consistent 4D Generation</h1>
+                        <!-- <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                            </span>
+                        </div> -->
+
+                        <!-- <div class="is-size-5 publication-authors">
+                            <span class="author-block">Institution Name<br>Conferance name and year</span>
+                            <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                        </div> -->
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://github.com/Wanderer7-sk" target="_blank" style="color: black;">Wandering</a>
+                            </span>
+                        </div>
+
+                        <!-- <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2410.15957.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+                                        <!-- </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span> --> 
+<!-- 
+                                <span class="link-block">
+                                    <a href="https://github.com/ZGCTroy/CamI2V" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+                                        <!-- </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span> --> 
+
+                                <!-- <span class="link-block">
+                                    <a href="https://arxiv.org/abs/2410.15957" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- first image -->
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <div class="image-container">
+                    <img src="static/image/main.png" width="1600px" height="600px" alt="Main visualization">
+                </div>
+                <h2 class="subtitle has-text-justified">
+                    <span class="first-sentence"><b>4D Reconstruction from input conditions.</b></span>
+                    We present a <b>comparative visualization of 3D scene generation</b> from static versus dynamic inputs, organized into three distinct examples. 
+                    The left "Static Scene" section demonstrates bedroom reconstruction from a text/image input ("A minimalist bedroom with light colors and wooden furniture"), showing an initial <b>3D point-cloud representation</b> followed by four coherent <b>multi-view renders</b>. 
+                    The central and right "Dynamic Scene" sections illustrate <b>temporal modeling capabilities</b>: the middle sequence captures a turtle's movement on a rock (input: "A turtle sunbathes on a mossy rock by a river"), while the rightmost sequence shows a school bus traversing left-to-right (input: "A yellow school bus drives left-to-right past signs"), both displaying <b>consistent object motion through four temporal frames</b>. 
+                    Green annotations in dynamic cases highlight <b>spatiotemporal feature tracking</b>, contrasting with the static scene's <b>view-consistent geometry</b>. 
+                    The visualization effectively contrasts single-view reconstruction (static) with view-consistent motion synthesis (dynamic) within a unified framework.
+                    
+        
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- abstract -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            The synthesis of spatiotemporally coherent 4D content presents fundamental challenges in computer vision, 
+                            requiring simultaneous modeling of high-fidelity spatial representations and physically plausible temporal dynamics. 
+                            Current approaches often struggle to maintain view consistency while handling complex scene dynamics, 
+                            particularly in large-scale environments with multiple interacting elements. 
+                            This work introduces <b>Dream4D</b>, a novel framework that bridges this gap through a 
+                            <em>synergy of controllable video generation and neural 4D reconstruction</em>. 
+                            Our approach seamlessly combines a two-stage architecture: it first predicts optimal camera trajectories 
+                            from a single image using few-shot learning, then generates geometrically consistent multi-view sequences 
+                            via a specialized pose-conditioned diffusion process, which are finally converted into a persistent 4D representation. 
+                            This framework is the first to leverage both rich temporal priors from video diffusion models and geometric awareness 
+                            of the reconstruction models, which significantly facilitates 4D generation and shows higher quality (e.g., mPSNR, mSSIM) 
+                            over existing methods.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section hero">
+
+        <div class="container has-text-centered">
+            <h2 class="title is-3">More Visualization on Out-of-domain Images (512<span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax_SVG" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mo>&amp;#x00D7;</mo></math>" role="presentation" style="font-size: 100%; display: inline-block; position: relative;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.808ex" height="1.292ex" viewBox="0 -529.2 778.5 556.3" role="img" focusable="false" style="vertical-align: 0.019ex; margin-bottom: -0.082ex;" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#MJMAIN-D7" x="0" y="0"></use></g></svg><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>×</mo></math></span></span><script type="math/tex" id="MathJax-Element-5">\times</script>320)</h2>
+            <h3 class="subtitle">
+                *Generated by 512<span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax_SVG" id="MathJax-Element-6-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mo>&amp;#x00D7;</mo></math>" role="presentation" style="font-size: 100%; display: inline-block; position: relative;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.808ex" height="1.409ex" viewBox="0 -564.5 778.5 606.6" role="img" focusable="false" style="vertical-align: 0.019ex; margin-bottom: -0.117ex;" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#MJMAIN-D7" x="0" y="0"></use></g></svg><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>×</mo></math></span></span><script type="math/tex" id="MathJax-Element-6">\times</script>320 model (50k training steps), compatible with input images of arbitary aspect ratio.
+            </h3>
+
+            <!-- Row 1 -->
+            <div class="video-container">
+
+                <div>
+                    <img src="static/image/GIF/che1.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Automobile
+                    </h2>
+                </div>
+
+                <div>
+                    <img src="static/image/GIF/deer1.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Sika deer
+                    </h2>
+                </div>
+
+                <div>
+                    <img src="static/image/GIF/dogrun.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        French Bulldog
+                    </h2>
+                </div>
+
+                <div>
+                    <img src="static/image/GIF/eagel1.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Eagel
+                    </h2>
+                </div>
+
+            </div>
+
+            <br>
+
+            <!-- Row 2 -->
+            <div class="video-container">
+
+                <div>
+                    <img src="static/image/GIF/eyu.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Crocodile
+                    </h2>
+                </div>
+
+                <div>
+                    <img src="static/image/GIF/fox.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Fox
+                    </h2>
+                </div>
+
+                <div>
+                    <img src="static/image/GIF/seagull.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Seagull
+                    </h2>
+                </div>
+
+                <div>
+                    <img src="static/image/GIF/huolieniao.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Flamingo
+                    </h2>
+                </div>
+
+            </div>
+
+            <br>
+
+            <!-- Row 3 -->
+            <div class="video-container">
+
+                <div>
+                    <img src="static/image/GIF/liebao1.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Cheetah
+                    </h2>
+                </div>
+
+                <div>
+                    <img src="static/image/GIF/lion.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Lion
+                    </h2>
+                </div>
+
+                <div>
+                    <img src="static/image/GIF/saiche.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Red racing car
+                    </h2>
+                </div>
+
+                <div>
+                    <img src="static/image/GIF/tiger.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Tiger
+                    </h2>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- out of domain 1024x576-->
+    <section class="section hero is-small">
+        <div class="container has-text-centered">
+            <h2 class="title is-3">Visualization on Static Demos </h2>
+
+            <h3 class="subtitle">
+                Multi-object static generation showcase: Generated using static modules and 4D generator.
+            </h3>
+
+            <div class="video-container out-domain-container">
+                <div>
+                    <img src="static/image/GIF/dog_orbit.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Sleeping pup by vintage bike on cobblestone street.
+                    </h2>
+                </div>
+
+                <div>
+                    <img src="static/image/GIF/livingroom_4.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Cozy living room with orange sofa and tea set.
+                    </h2>
+                </div>
+            </div>
+
+            <div class="video-container out-domain-container">
+                <div>
+                    <img src="static/image/GIF/sofa_2.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        Sunlit lounge with brown sofa and thriving greenery.
+                    </h2>
+                </div>
+
+                <div>
+                    <img src="static/image/GIF/bedroom_1.gif" alt="Animation">
+                    <h2 class="subtitle has-text-centered italic">
+                        A minimalist bedroom with light colors and wooden furniture.
+                    </h2>
+                </div>
+                
+            </div>
+
+        </div>
+    </section>
+
+
+    
+
+    <!-- Quantitative Comparison -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <h2 class="title is-3 has-text-centered">Quantitative Comparison</h2>
+                <div class="content has-text-centered is-size-7">
+                    <table>
+                        <tbody><tr>
+                            <td class="has-text-justified"><b>Method</b></td>
+                            <td><b>mPSNR(dB)</b> ↑</td>
+                            <td><b>mSSIM</b> ↑</td>
+                            <td><b>mLPIPS</b> ↓</td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-justified"><b>Dream4D</b></td>
+                            <td><b>20.56</b></td>
+                            <td><b>0.702</b></td>
+                            <td><b>0.170</b></td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-justified">Megasam</td>
+                            <td>17.625</td>
+                            <td>0.601</td>
+                            <td>0.207</td>
+
+                        </tr>
+                        <tr>
+                            <td class="has-text-justified">Shape-of-Motion</td>
+                            <td>16.72</td>
+                            <td>0.630</td>
+                            <td>0.450</td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-justified">Cut3r</td>
+                            <td>14.69</td>
+                            <td>0.543</td>
+                            <td>0.341</td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-justified">CamI2V</td>
+                            <td>14.08</td>
+                            <td>0.449</td>
+                            <td>0.334</td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-justified">SeVA</td>
+                            <td>12.67</td>
+                            <td>0.495</td>
+                            <td>0.579</td>
+                        </tr>
+                    </tbody></table>
+                </div>
+                <div class="content has-text-justified">  
+                    <p>
+                        The superior performance of our method is not merely reflected in quantitative gains or visual quality, 
+                        but fundamentally stems from its ability to jointly model geometry and dynamics while maintaining multi-view and temporal consistency.  
+                        The analysis highlights how architectural choices—such as the integration of pose-aware warping and dynamic feature refinement—
+                        directly address common failure modes in existing methods, such as structural fragmentation, motion blur, and flickering.  
+                        By examining both numerical trends and visual artifacts across baselines, we identify that competing approaches 
+                        often sacrifice one aspect of reconstruction quality (e.g., geometry) for another (e.g., smoothness), 
+                        whereas our design enables synergistic improvements.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <h2 class="title is-3 has-text-centered">Ablation Study</h2>
+                <div class="content has-text-centered is-size-7">
+                    <table>
+                        <tbody><tr>
+                            <td class="has-text-justified"><b>Variant</b></td>
+                            <td><b>mPSNR(dB)</b> ↑</td>
+                            <td><b>mSSIM</b> ↑</td>
+                            <td><b>mLPIPS</b> ↓</td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-justified"><b>Dynamic Module + 4D Generator</b></td>
+                            <td><b>19.78</b></td>
+                            <td><b>0.6686</b></td>
+                            <td><b>0.1220</b></td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-justified">Only Dynamic Module</td>
+                            <td>18.37</td>
+                            <td>0.6361</td>
+                            <td>0.1841</td>
+
+                        </tr>
+                        <tr>
+                            <td class="has-text-justified">δ</td>
+                            <td>-1.41</td>
+                            <td>-0.0325</td>
+                            <td>+0.0621</td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-justified">Static Module + 4D Generator</td>
+                            <td>13.35</td>
+                            <td>0.6550</td>
+                            <td>0.2996</td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-justified">Only Static Module</td>
+                            <td>12.56</td>
+                            <td>0.5779</td>
+                            <td>0.3461</td>
+                        </tr>
+
+                        <tr>
+                            <td class="has-text-justified">δ</td>
+                            <td>-0.79</td>
+                            <td>-0.0771</td>
+                            <td>+0.0465</td>
+                        </tr>
+                    </tbody></table>
+                </div>
+                <div class="content has-text-justified">  
+                    <p>
+                        This table presents a quantitative ablation study comparing the performance impact of the 4D Generator module 
+                        across different system configurations. 
+                        The data shows consistent improvements when integrating the 4D Generator: for dynamic scenarios, 
+                        it boosts mPSNR by 1.41 dB (18.37→19.78) and mSSIM by 0.0325 (0.6361→0.6686) while reducing mLPIPS by 0.0621; 
+                        similar gains occur in static scenarios with 0.79 dB mPSNR and 0.0771 mSSIM improvements. 
+                        The △ rows clearly demonstrate the 4D Generator's dual capability to enhance both spatial quality metrics (mPSNR/mSSIM) 
+                        and temporal consistency (mLPIPS) across different operational modes.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ablation 1
+        <div class="video-container">
+
+            <div>
+                <video autoplay="" controls="" muted="" loop="">
+                    <source src="static/audio/074b5771-86cd-48f0-bb9e-91cb23b21717" type="video/mp4">
+                </video>
+                <h2 class="subtitle has-text-centered italic">
+                    CamI2V (Ours)
+                </h2>
+            </div>
+
+            <div>
+                <video autoplay="" controls="" muted="" loop="">
+                    <source src="static/audio/7e77e037-4e68-48d7-a8a8-12e50ffc14ce" type="video/mp4">
+                </video>
+                <h2 class="subtitle has-text-centered italic">
+                    CamI2V - 3D full attention
+                </h2>
+            </div>
+    
+            <div>
+                <video autoplay="" controls="" muted="" loop="">
+                    <source src="static/audio/8934b1a9-6316-4654-bddb-674f0f08a75b" type="video/mp4">
+                </video>
+                <h2 class="subtitle has-text-centered italic">
+                    CamI2V - epipolar attention <br> only on reference frame <br> (similar to CamCo)
+                </h2>
+            </div>
+
+            <div>
+                <video autoplay="" controls="" muted="" loop="">
+                    <source src="static/audio/7e0cef9c-e6fc-42ea-8619-3b83cf459dc7" type="video/mp4">
+                </video>
+                <h2 class="subtitle has-text-centered italic">
+                    CameraCtrl
+                </h2>
+            </div>
+
+            <div>
+                <video autoplay="" controls="" muted="" loop="">
+                    <source src="static/audio/406a4134-995a-4493-8b0a-905d45af7098" type="video/mp4">
+                </video>
+                <h2 class="subtitle has-text-centered italic">
+                    MotionCtrl
+                </h2>
+            </div>
+
+        </div>
+
+    </section> -->
+
+    <!-- cam_to_ray -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <h2 class="title is-3 has-text-centered">Qualitative Comparison of 4D Reconstruction Methods on Static and Dynamic Scenes</h2>
+                <img src="static/image/comprison.png" width="100%">
+                <h2 class="subtitle has-text-justified">
+                    The left panel displays input frames, while the middle blue-framed section shows our method's results 
+                    featuring complete geometry and sharp details in both scene types. 
+                    In comparison, the yellow-framed right section reveals typical artifacts in baseline outputs: 
+                    structural distortions in static scenes and temporal inconsistencies in dynamic sequences, 
+                    with arrows highlighting key failure cases like blurred surfaces or broken geometries. 
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <h2 class="title is-3 has-text-centered">Ablation Study on 4D Generator's Impact for Dynamic and Static Scene Modeling</h2>
+                <img src="static/image/ablation.png" width="100%">
+                <h2 class="subtitle has-text-justified">
+                    This 2×2 grid figure presents an ablation study comparing the isolated and combined performance of dynamic/static modules 
+                    with the 4D Generator. 
+                    The top row shows baseline outputs (left: dynamic module with temporal flickering artifacts highlighted by red boxes; 
+                    right: static module exhibiting multi-view inconsistencies), 
+                    while the bottom row demonstrates significantly improved results when integrated with the 4D Generator - 
+                    the left dynamic+4D case shows smoothed temporal transitions (arrows indicating coherent motion), 
+                    and the right static+4D case displays geometrically consistent multi-view renders. 
+                    Red bounding boxes strategically emphasize key quality improvements in texture details (static) and motion continuity (dynamic), 
+                    visually validating the 4D Generator's dual enhancement capability for both spatial and temporal reconstruction tasks.
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- attention comparison -->
+    <section class="section hero">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <h2 class="title is-3 has-text-centered">From Text to 4D: Pipeline Diagram of Dream4D's Hybrid VLM-Transformer-Diffusion Architecture</h2>
+                <img src="static/image/pipeline.png" width="100%">
+                <br><h2 class="subtitle has-text-justified">
+                    <b>Pipeline Overview.</b> Our methods illustrates a multimodal architecture for generating dynamic videos from static images and text prompts. 
+                    The pipeline begins with two parallel input streams: 
+                    (1) an Image Encoder processes the input image (e.g., a dog resting on a cobblestone street with bicycles and distant pedestrians), 
+                    while (2) a Tokenizer + Embedding Layer extracts semantic features from the text prompt (e.g., ``pan left''). 
+                    These modalities are aligned via a Vision-Language Projector, which maps them into a unified Shared Embedding Space 
+                    augmented with Positional Encoding for spatiotemporal coherence. 
+                    The fused representation is then processed by a Transformer Encoder, leveraging both Vision-Language Model (VLM) 
+                    and Large Language Model (LLM) components to interpret cross-modal instructions (e.g., viewpoint changes). 
+                    Subsequent refinement occurs through a Diffusion Transformer (DiT) Block, where patch-based operations 
+                    and multi-head attention enable controlled video synthesis. 
+                    Finally, the Decoder Component generates frame sequences, transforming latent features into output 4D videos.
+                </h2><br>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+
+                        <p>
+                            This page was built using the 
+                            <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> 
+                            which was adopted from the 
+                            <a href="https://nerfies.github.io" target="_blank">Nerfies</a>
+                            project page.
+                            You are free to borrow the source code of this website, we just ask that you link back to
+                            this page in the footer. <br> 
+                            This website is licensed under a 
+                            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+                            Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Statcounter tracking code -->
+
+    <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+    <!-- GIF循环播放控制脚本 -->
+    <script>
+        // 等待页面加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有GIF图片
+            const gifImages = document.querySelectorAll('.video-container img[src*=".gif"]');
+            
+            // 为每个GIF添加循环播放功能
+            gifImages.forEach(function(img) {
+                // 保存原始src
+                const originalSrc = img.src;
+                
+                // 创建一个定时器来定期重新加载GIF
+                function reloadGif() {
+                    // 重新加载GIF来重启动画
+                    const timestamp = new Date().getTime();
+                    img.src = originalSrc + '?t=' + timestamp;
+                }
+                
+                // 立即开始定时重新加载
+                setInterval(reloadGif, 3000);
+                
+                // 监听GIF加载完成事件
+                img.addEventListener('load', function() {
+                    // 确保GIF开始播放
+                    img.style.animationPlayState = 'running';
+                });
+                
+                // 监听GIF错误事件
+                img.addEventListener('error', function() {
+                    setTimeout(reloadGif, 500);
+                });
+                
+                // 监听页面可见性变化，当页面重新可见时重新加载
+                document.addEventListener('visibilitychange', function() {
+                    if (!document.hidden) {
+                        reloadGif();
+                    }
+                });
+            });
+        });
+    </script>
+
+</body></html>
