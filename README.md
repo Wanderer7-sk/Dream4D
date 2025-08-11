@@ -26,7 +26,7 @@ The synthesis of spatiotemporally coherent 4D content presents fundamental chall
     </tr>
     <tr>
         <td align="center">
-            <img src="project Website/static/image/GIF/che1.gif" alt="Animation" class="gif-loop" data-src="project Website/static/image/GIF/che1.gif">
+            ![Image](https://github.com/user-attachments/assets/2340a9c2-ff58-435d-a646-61f32ed0466c)
         </td>
         <td align="center">
             <img src="project Website/static/image/GIF/saiche.gif" alt="Animation" class="gif-loop" data-src="project Website/static/image/GIF/saiche.gif">
