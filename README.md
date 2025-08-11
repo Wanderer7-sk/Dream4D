@@ -26,10 +26,10 @@ The synthesis of spatiotemporally coherent 4D content presents fundamental chall
     </tr>
     <tr>
         <td align="center">
-            ![Image](https://github.com/user-attachments/assets/2340a9c2-ff58-435d-a646-61f32ed0466c)
+            ![Image](https://github.com/user-attachments/assets/cdfb6399-236a-485c-945b-5ffcbe189712)
         </td>
         <td align="center">
-            <img src="project Website/static/image/GIF/saiche.gif" alt="Animation" class="gif-loop" data-src="project Website/static/image/GIF/saiche.gif">
+           ![Image](https://github.com/user-attachments/assets/4004b575-dd4a-4bed-8186-3bdfff675526)
         </td>
     </tr>
     <tr>
@@ -42,10 +42,10 @@ The synthesis of spatiotemporally coherent 4D content presents fundamental chall
     </tr>
     <tr>
         <td align="center">
-            <img src="project Website/static/image/GIF/eyu.gif" alt="Animation" class="gif-loop" data-src="project Website/static/image/GIF/eyu.gif">
+            ![Image](https://github.com/user-attachments/assets/290a4e2f-cd21-4f7d-9434-e3cd458b4a57)
         </td>
         <td align="center">
-            <img src="project Website/static/image/GIF/lion.gif" alt="Animation" class="gif-loop" data-src="project Website/static/image/GIF/lion.gif">
+            ![Image](https://github.com/user-attachments/assets/86bd48ef-2726-4c02-8624-693667e87379)
         </td>
     </tr>
 </table>
