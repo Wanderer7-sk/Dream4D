@@ -26,10 +26,10 @@ The synthesis of spatiotemporally coherent 4D content presents fundamental chall
     </tr>
     <tr>
         <td align="center">
-![Animation](https://github.com/user-attachments/assets/cdfb6399-236a-485c-945b-5ffcbe189712)
+            <img src="https://github.com/user-attachments/assets/cdfb6399-236a-485c-945b-5ffcbe189712" alt="Silver SUV on mountain road" width="400">
         </td>
         <td align="center">
-![Animation](https://github.com/user-attachments/assets/4004b575-dd4a-4bed-8186-3bdfff675526)
+            <img src="https://github.com/user-attachments/assets/4004b575-dd4a-4bed-8186-3bdfff675526" alt="Red race car on track" width="400">
         </td>
     </tr>
     <tr>
@@ -42,10 +42,10 @@ The synthesis of spatiotemporally coherent 4D content presents fundamental chall
     </tr>
     <tr>
         <td align="center">
-![Animation](https://github.com/user-attachments/assets/290a4e2f-cd21-4f7d-9434-e3cd458b4a57)
+            <img src="https://github.com/user-attachments/assets/290a4e2f-cd21-4f7d-9434-e3cd458b4a57" alt="Crocodile in wetlands" width="400">
         </td>
         <td align="center">
-![Animation](https://github.com/user-attachments/assets/86bd48ef-2726-4c02-8624-693667e87379)
+            <img src="https://github.com/user-attachments/assets/86bd48ef-2726-4c02-8624-693667e87379" alt="Lion on savanna" width="400">
         </td>
     </tr>
 </table>
