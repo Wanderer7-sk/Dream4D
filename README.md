@@ -1,7 +1,7 @@
 # Dream4D: Lifting Camera-Controlled I2V towards Spatiotemporally Consistent 4D Generation
 
 <div align="center">
-    <a href="https://arxiv.org/abs/2410.15957"><img src="https://img.shields.io/static/v1?label=arXiv&message=2410.15957&color=b21d1a"></a>
+    <a href="https://arxiv.org/abs/2508.07769"><img src="https://img.shields.io/static/v1?label=arXiv&message=2410.15957&color=b21d1a"></a>
     <a href="https://Wanderer7-sk.github.io/Dream4D.github.io"><img src="https://img.shields.io/static/v1?label=Project&message=Page&color=green"></a>
 </div>
 
